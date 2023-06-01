@@ -3,12 +3,21 @@
 -- most common subquery: select - where
 
 -- employees in department 'IT' (slightly unsafe, departments could have duplicated names)
+-- con le subquery meglio vedere la query più interna
+
 select concat(first_name, ' ', last_name)
 from employee
 where department_id = (
     select department_id
     from department
     where name = 'IT');
+
+-- JOIN version
+select concat(first_name, ' ', last_name)
+from employee e join department d 
+using (department_id)
+where name = 'IT';
+
 
 -- who is the manager of John Chen
 -- fine, but risky: first + last name should be unique!
@@ -20,6 +29,13 @@ where employee_id = (
 	from employee
 	where first_name = 'John' and last_name = 'Chen');
 
+--with JOIN
+select m.employee_id, m.first_name, m.last_name, m.salary
+from employee e join employee m
+on e.manager_id = m.employee_id
+where e.first_name='John' and e.last_name='Chen'; 
+
+
 -- a safer version select - where, using "in" and checking for null
 -- who are the manager of employees having last name starting with 'K' (null not included)
 select first_name, last_name
@@ -28,6 +44,13 @@ where employee_id in (
 	select manager_id
 	from employee
 	where last_name like 'K%' and manager_id is not null);
+
+-- try with self-join 
+-- select m.first_name, m.last_name
+-- from employee e join employee m
+-- on e.manager_id = m.employee_id
+-- where e.last_name like 'K%' and manager_id is not null;
+
 
 -- subquery in select - group by - having + another one in select - from
 -- step 1: average salaries for each department

@@ -53,10 +53,15 @@ where last_name like 'B%';
 select first_name, last_name
 from employee
 where last_name like '__ll%';
+--where last_name like '%ll%';
 
 select first_name, last_name
 from employee
 where last_name like '%ull_';
+
+select first_name, last_name
+from employee
+where first_name ilike '%tr%' OR last_name ilike '%ll';
 
 select last_name
 from employee
@@ -81,7 +86,7 @@ where name >= 'A' and name <= 'China';
 
 select *
 from country
-where name between 'C' and 'China';
+where name between 'C' and 'D';
 
 -- check if (not) in a set by operator IN
 select *

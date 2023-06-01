@@ -11,14 +11,14 @@ from employee;
 
 -- max, min
 select max(salary) as "Max salary", min(salary) as "Min salary",
-	round(avg(salary), -2) as "Average salary"
+	round(avg(salary), -2) as "Average salary" --round è una funzione per questo le parentesi.
 from employee;
 
 select max(hired) "Most recent hire" , min(hired) "Earliest hire"
 from employee;
 
 -- spoiler: subquery to get extra info
-select first_name, last_name, salary 
+select first_name, last_name, salary --prendi il salario minimo di employee ma così prendiamo anche altre informazioni.
 from employee
 where salary = (
 	select min(salary)
@@ -26,10 +26,12 @@ where salary = (
 );
 
 -- min, max on strings
+-- sulle stringhe sostanzalmente guardano l'ordine alfabetico
+--se cambio last_name con first_name mi spunta l'ultimo nome mentre il primo first name rimane lo stesso
 select min(first_name), max(last_name)
 from employee;
 
--- sum
+-- sum: vale solo sui numeri
 select sum(salary)
 from employee;
 

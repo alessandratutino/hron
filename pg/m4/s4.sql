@@ -11,6 +11,10 @@ order by d.name;
 -- group them by manager id
 -- keep the groups with an average salary above 6000
 -- and order the result by the the second column, descending
+-- sto raggruppando i dipendenti mediante il manager_id
+-- il cui salario è minore di 8000
+-- tengo solo i gruppi che hanno una media salariale > 6000
+-- ordinati in modo decrescente 
 select manager_id, round(avg(salary)) as avg_sal
 from employee
 where salary < 8000

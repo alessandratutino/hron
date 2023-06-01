@@ -34,6 +34,10 @@ where region.region_id = country.region_id
 order by r_id, country.name;
 
 -- table alias
+-- (FROM)dalle tabelle region e country, leggimi la PK di region e il nome, la PK di country e il nome;
+-- (SELECT)guarda tutti quelli nella tabella country tutti quelli che nella FK hanno il riferimento alla regione.
+-- (WHERE) dove ad ogni PK nella tab regione corrisponde una FK del paese
+-- (ORDER BY)ordinati per PK della regione e nome del country
 select r.region_id as r_id, r.name as region, c.country_id, c.name
 from region r, country c
 where r.region_id = c.region_id

@@ -2,8 +2,8 @@
 
 -- join using
 select e.first_name, e.last_name , d.name as "department name", l.city
-from employee e join department d using (department_id)
-	join location l using (location_id);
+from employee e join department d using (department_id) /*un dipartimento, più dipendenti --> one to many; FK sta dalla parte many(department)*/
+	join location l using (location_id); /*join tra department e location,in questo caso la FK è department (parte many) nella tab location.*/
 
 -- join on
 select e.first_name, e.last_name, l.city
